@@ -96,9 +96,10 @@
             Photography
         </h1>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <!-- Updated to Masonry Column layout to handle mixed landscape & portrait photos cleanly -->
+        <div class="columns-1 md:columns-2 gap-6 sm:gap-8">
             <!-- Photo 1 -->
-            <div class="border border-zinc-800 p-2 bg-zinc-900/50">
+            <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" onclick="openLightbox('images/beach_sunset_1.jpg', '01. BEACH_SUNSET_1.JPG')">
                     <img src="images/beach_sunset_1.jpg" alt="Beach Sunset" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/beach_sunset_1.jpg'">
                     <!-- Transparent protective & click overlay -->
@@ -119,7 +120,7 @@
             </div>
 
             <!-- Photo 2 -->
-            <div class="border border-zinc-800 p-2 bg-zinc-900/50">
+            <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" onclick="openLightbox('images/orange_sunset_reflection_puddle.jpg', '02. ORANGE_SUNSET_REFLECTION_PUDDLE.JPG')">
                     <img src="images/orange_sunset_reflection_puddle.jpg" alt="Orange Sunset Reflection Puddle" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/orange_sunset_reflection_puddle.jpg'">
                     <!-- Transparent protective & click overlay -->
@@ -140,7 +141,7 @@
             </div>
 
             <!-- Photo 3 -->
-            <div class="border border-zinc-800 p-2 bg-zinc-900/50">
+            <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" onclick="openLightbox('images/multiple_coloured_buildings_beach.jpg', '03. MULTIPLE_COLOURED_BUILDINGS_BEACH.JPG')">
                     <img src="images/multiple_coloured_buildings_beach.jpg" alt="Multiple Coloured Buildings Beach" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/multiple_coloured_buildings_beach.jpg'">
                     <!-- Transparent protective & click overlay -->
@@ -161,7 +162,7 @@
             </div>
 
             <!-- Photo 4 -->
-            <div class="border border-zinc-800 p-2 bg-zinc-900/50">
+            <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" onclick="openLightbox('images/bird_in_foliage.png', '04. BIRD_IN_FOLIAGE.PNG')">
                     <img src="images/bird_in_foliage.png" alt="Bird in Foliage" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/bird_in_foliage.png'">
                     <!-- Transparent protective & click overlay -->
