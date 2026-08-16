@@ -34,6 +34,20 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         * { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
+
+        /* Disable text selection and touch-callouts */
+        body, img {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        /* Hide content during print or print-to-PDF attempts */
+        @media print {
+            body { display: none !important; }
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
@@ -82,10 +96,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Photo 1 -->
             <div class="border border-zinc-800 p-2 bg-zinc-900/50">
-                <div class="relative">
-                    <img src="images/beach_sunset_1.jpg" alt="Beach Sunset" class="w-full h-auto object-cover" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/beach_sunset_1.jpg'">
+                <div class="relative overflow-hidden select-none">
+                    <img src="images/beach_sunset_1.jpg" alt="Beach Sunset" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/beach_sunset_1.jpg'">
+                    <!-- Transparent protective overlay -->
+                    <div class="absolute inset-0 z-10 bg-transparent"></div>
                     <!-- Watermark -->
-                    <div class="absolute bottom-2 right-2 text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 pointer-events-none select-none tracking-widest uppercase border border-zinc-800">
+                    <div class="absolute bottom-2 right-2 z-20 text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 pointer-events-none select-none tracking-widest uppercase border border-zinc-800">
                         © HB WORKS
                     </div>
                 </div>
@@ -97,10 +113,12 @@
 
             <!-- Photo 2 -->
             <div class="border border-zinc-800 p-2 bg-zinc-900/50">
-                <div class="relative">
-                    <img src="images/photo2.jpg" alt="Photo Title 2" class="w-full h-auto object-cover" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/photo2.jpg'">
+                <div class="relative overflow-hidden select-none">
+                    <img src="images/photo2.jpg" alt="Photo Title 2" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/photo2.jpg'">
+                    <!-- Transparent protective overlay -->
+                    <div class="absolute inset-0 z-10 bg-transparent"></div>
                     <!-- Watermark -->
-                    <div class="absolute bottom-2 right-2 text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 pointer-events-none select-none tracking-widest uppercase border border-zinc-800">
+                    <div class="absolute bottom-2 right-2 z-20 text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 pointer-events-none select-none tracking-widest uppercase border border-zinc-800">
                         © HB WORKS
                     </div>
                 </div>
@@ -126,6 +144,22 @@
             burger.classList.toggle('hidden');
             close.classList.toggle('hidden');
         }
+
+        // Prevent right click menu, image dragging, and text highlighting
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
+        document.addEventListener('selectstart', e => e.preventDefault());
+
+        // Block common inspection & saving shortcuts (F12, Ctrl+S, Ctrl+U, Ctrl+P)
+        document.addEventListener('keydown', e => {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && ['s', 'u', 'p', 'c'].includes(e.key.toLowerCase())) ||
+                (e.ctrlKey && e.shiftKey && ['i', 'j', 'c'].includes(e.key.toLowerCase()))
+            ) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>
