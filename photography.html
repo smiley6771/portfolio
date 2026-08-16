@@ -35,7 +35,6 @@
         body { font-family: 'Inter', sans-serif; }
         * { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
 
-        /* Disable text selection and touch-callouts */
         body, img {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -44,7 +43,6 @@
             -webkit-touch-callout: none;
         }
 
-        /* Hide content during print or print-to-PDF attempts */
         @media print {
             body { display: none !important; }
         }
@@ -52,7 +50,6 @@
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
 
-    <!-- Header Navigation -->
     <header class="w-full border-b border-zinc-800 px-6 py-4 relative z-50 bg-zinc-950">
         <nav class="max-w-5xl mx-auto flex items-center justify-between">
             <a href="/" class="font-bold text-sm tracking-wider uppercase text-zinc-100 hover:text-zinc-400 transition-colors">
@@ -71,22 +68,20 @@
         </nav>
     </header>
 
-    <!-- Overlay Navigation Menu -->
     <div id="nav-overlay" class="hidden fixed inset-0 top-[57px] bg-zinc-950/95 border-b border-zinc-800 z-40 flex flex-col justify-start px-6 py-12 max-w-5xl mx-auto">
         <div class="flex flex-col gap-6 text-xl font-mono uppercase tracking-widest">
             <a href="/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 01. Main
             </a>
-            <a href="/photography/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+            <a href="/photography" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 02. Photography
             </a>
-            <a href="/contact/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+            <a href="/contact" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 03. Contact
             </a>
         </div>
     </div>
 
-    <!-- Main Content -->
     <main class="flex-grow flex flex-col py-10 sm:py-20 px-4 sm:px-6 max-w-5xl mx-auto w-full">
         <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3 sm:mb-4">
             Archive
@@ -96,21 +91,18 @@
             Photography
         </h1>
 
-        <!-- Masonry Column Layout -->
         <div class="columns-1 md:columns-2 gap-6 sm:gap-8">
             <!-- Photo 1 -->
             <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" onclick="openLightbox('images/beach_sunset_1.jpg', '01. BEACH_SUNSET_1.JPG', '[COASTAL]')">
                     <img src="images/beach_sunset_1.jpg" alt="Beach Sunset" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/beach_sunset_1.jpg'">
                     
-                    <!-- Center Overlay Watermark -->
                     <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                         <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
                             © HB WORKS
                         </span>
                     </div>
 
-                    <!-- Transparent protective & click overlay -->
                     <div class="absolute inset-0 z-20 bg-transparent flex items-end justify-between p-2">
                         <span class="text-[10px] font-mono text-zinc-300/90 bg-zinc-950/90 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
                             TAP TO EXPAND
@@ -133,14 +125,12 @@
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" onclick="openLightbox('images/orange_sunset_reflection_puddle.jpg', '02. ORANGE_SUNSET_REFLECTION_PUDDLE.JPG', '[REFLECTION]')">
                     <img src="images/orange_sunset_reflection_puddle.jpg" alt="Orange Sunset Reflection Puddle" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/orange_sunset_reflection_puddle.jpg'">
                     
-                    <!-- Center Overlay Watermark -->
                     <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                         <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
                             © HB WORKS
                         </span>
                     </div>
 
-                    <!-- Transparent protective & click overlay -->
                     <div class="absolute inset-0 z-20 bg-transparent flex items-end justify-between p-2">
                         <span class="text-[10px] font-mono text-zinc-300/90 bg-zinc-950/90 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
                             TAP TO EXPAND
@@ -163,14 +153,12 @@
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" onclick="openLightbox('images/multiple_coloured_buildings_beach.jpg', '03. MULTIPLE_COLOURED_BUILDINGS_BEACH.JPG', '[ARCHITECTURE]')">
                     <img src="images/multiple_coloured_buildings_beach.jpg" alt="Multiple Coloured Buildings Beach" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/multiple_coloured_buildings_beach.jpg'">
                     
-                    <!-- Center Overlay Watermark -->
                     <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                         <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
                             © HB WORKS
                         </span>
                     </div>
 
-                    <!-- Transparent protective & click overlay -->
                     <div class="absolute inset-0 z-20 bg-transparent flex items-end justify-between p-2">
                         <span class="text-[10px] font-mono text-zinc-300/90 bg-zinc-950/90 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
                             TAP TO EXPAND
@@ -193,14 +181,12 @@
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" onclick="openLightbox('images/bird_in_foliage.png', '04. BIRD_IN_FOLIAGE.PNG', '[WILDLIFE]')">
                     <img src="images/bird_in_foliage.png" alt="Bird in Foliage" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/bird_in_foliage.png'">
                     
-                    <!-- Center Overlay Watermark -->
                     <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                         <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
                             © HB WORKS
                         </span>
                     </div>
 
-                    <!-- Transparent protective & click overlay -->
                     <div class="absolute inset-0 z-20 bg-transparent flex items-end justify-between p-2">
                         <span class="text-[10px] font-mono text-zinc-300/90 bg-zinc-950/90 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
                             TAP TO EXPAND
@@ -220,9 +206,7 @@
         </div>
     </main>
 
-    <!-- Fullscreen Lightbox Modal -->
     <div id="lightbox" class="hidden fixed inset-0 z-50 bg-zinc-950/95 flex flex-col items-center justify-between p-3 sm:p-8 select-none border-t-2 border-zinc-100 overflow-y-auto" onclick="closeLightbox(event)">
-        <!-- Top bar with title and touch-friendly close button -->
         <div class="w-full max-w-5xl flex justify-between items-center border-b border-zinc-800 pb-3 gap-2">
             <div class="flex items-center gap-2 truncate">
                 <span id="lightbox-title" class="text-[11px] sm:text-xs font-mono text-zinc-300 uppercase tracking-widest truncate">
@@ -237,21 +221,17 @@
             </button>
         </div>
 
-        <!-- Lightbox Image Wrapper -->
         <div class="relative my-auto max-w-5xl max-h-[75vh] w-full flex items-center justify-center border border-zinc-800 bg-zinc-900 p-1.5 sm:p-2 overflow-hidden" onclick="event.stopPropagation()">
             <img id="lightbox-img" src="" alt="Expanded View" class="max-w-full max-h-[65vh] sm:max-h-[70vh] object-contain pointer-events-none select-none">
             
-            <!-- Transparent shield over expanded image -->
             <div class="absolute inset-0 z-10 bg-transparent"></div>
 
-            <!-- Large Center Overlay Watermark -->
             <div class="absolute inset-0 z-20 pointer-events-none flex items-center justify-center">
                 <div class="text-lg sm:text-3xl md:text-5xl font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border-2 border-zinc-100/20 px-3 sm:px-6 py-2 sm:py-4 rotate-[-12deg] select-none text-center">
                     © HB WORKS
                 </div>
             </div>
 
-            <!-- Bottom watermark strip inside modal -->
             <div class="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 z-20 text-[9px] sm:text-xs font-mono text-zinc-200 bg-zinc-950/90 px-2 sm:px-3 py-1 border border-zinc-800 tracking-widest uppercase pointer-events-none">
                 © HB WORKS
             </div>
@@ -266,7 +246,6 @@
         <p>&copy; HB Works (hbworks.uk)</p>
     </footer>
 
-    <!-- Scripts -->
     <script>
         function toggleMenu() {
             const overlay = document.getElementById('nav-overlay');
@@ -278,7 +257,6 @@
             close.classList.toggle('hidden');
         }
 
-        /* Lightbox Functions */
         function openLightbox(src, title, tag) {
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
@@ -304,7 +282,6 @@
             document.body.classList.remove('overflow-hidden');
         }
 
-        /* Keyboard & Security Events */
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 forceCloseLightbox();
