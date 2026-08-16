@@ -67,10 +67,10 @@
             <a href="/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 01. Main
             </a>
-            <a href="/photography/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+            <a href="/photography" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 02. Photography
             </a>
-            <a href="/contact/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+            <a href="/contact" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 03. Contact
             </a>
         </div>
@@ -78,7 +78,6 @@
 
     <main class="flex-grow flex flex-col py-10 sm:py-16 px-4 sm:px-6 max-w-5xl mx-auto w-full gap-12 sm:gap-16">
         
-        <!-- Hero Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-zinc-800 pb-10">
             <div class="max-w-2xl">
                 <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-zinc-100 font-mono leading-tight">
@@ -86,41 +85,38 @@
                 </h1>
             </div>
 
-            <div class="shrink-0 flex flex-col gap-3">
+            <div class="shrink-0 flex flex-col sm:flex-row gap-3">
                 <button onclick="copyDomain()" class="w-full sm:w-auto border border-zinc-800 text-zinc-300 hover:border-zinc-600 px-5 py-3 text-xs font-mono transition-colors active:bg-zinc-900 text-left sm:text-center">
                     <span id="copy-text">www.hbworks.uk</span>
                 </button>
-                <a href="/contact/" class="w-full sm:w-auto text-center border border-zinc-100 bg-zinc-100 text-zinc-950 hover:bg-zinc-300 transition-colors px-5 py-3 text-xs font-mono font-semibold uppercase tracking-wider">
+                <a href="/contact" class="w-full sm:w-auto text-center border border-zinc-100 bg-zinc-100 text-zinc-950 hover:bg-zinc-300 transition-colors px-5 py-3 text-xs font-mono font-semibold uppercase tracking-wider">
                     Contact &rarr;
                 </a>
             </div>
         </div>
 
-        <!-- Featured Work Showcase Grid -->
         <section class="flex flex-col gap-6">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-mono text-zinc-400 uppercase tracking-widest">
                     Featured Work Showcase
                 </span>
-                <a href="/photography/" class="text-xs font-mono text-zinc-400 hover:text-zinc-100 uppercase tracking-widest underline transition-colors">
+                <a href="/photography" class="text-xs font-mono text-zinc-400 hover:text-zinc-100 uppercase tracking-widest underline transition-colors">
                     View All Work &rarr;
                 </a>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <!-- Featured Photo 1 -->
-                <a href="/photography/" class="group border border-zinc-800 p-2.5 bg-zinc-900/50 hover:border-zinc-600 transition-colors block">
+                <a href="/photography" class="group border border-zinc-800 p-2.5 bg-zinc-900/50 hover:border-zinc-600 transition-colors block">
                     <div class="relative overflow-hidden aspect-[4/3]">
                         <img src="images/orange_sunset_reflection_puddle.jpg" alt="Orange Sunset Reflection Puddle" class="w-full h-full object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/orange_sunset_reflection_puddle.jpg'">
                         
-                        <!-- Diagonal Watermark Overlay -->
                         <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                             <span class="text-xs font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
                                 © HB WORKS
                             </span>
                         </div>
 
-                        <!-- Hover overlay tag -->
                         <div class="absolute inset-0 z-20 bg-zinc-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-2">
                             <span class="text-[10px] font-mono text-zinc-300 bg-zinc-950 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
                                 OPEN IN ARCHIVE
@@ -137,18 +133,16 @@
                 </a>
 
                 <!-- Featured Photo 2 -->
-                <a href="/photography/" class="group border border-zinc-800 p-2.5 bg-zinc-900/50 hover:border-zinc-600 transition-colors block">
+                <a href="/photography" class="group border border-zinc-800 p-2.5 bg-zinc-900/50 hover:border-zinc-600 transition-colors block">
                     <div class="relative overflow-hidden aspect-[4/3]">
                         <img src="images/multiple_coloured_buildings_beach.jpg" alt="Multiple Coloured Buildings Beach" class="w-full h-full object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/multiple_coloured_buildings_beach.jpg'">
                         
-                        <!-- Diagonal Watermark Overlay -->
                         <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                             <span class="text-xs font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
                                 © HB WORKS
                             </span>
                         </div>
 
-                        <!-- Hover overlay tag -->
                         <div class="absolute inset-0 z-20 bg-zinc-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-2">
                             <span class="text-[10px] font-mono text-zinc-300 bg-zinc-950 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
                                 OPEN IN ARCHIVE
