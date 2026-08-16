@@ -1,73 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HB Works</title>
-
+    <title>HB Works | hbworks.uk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            950: '#09090b',
+                            900: '#18181b',
+                            800: '#27272a',
+                            700: '#3f3f46',
+                            400: '#a1a1aa',
+                            300: '#d4d4d8',
+                            100: '#f4f4f5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-        }
-
-        main {
-            max-width: 900px;
-            margin: auto;
-            padding: 100px 25px;
-        }
-
-        h1 {
-            font-size: 60px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 20px;
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        .projects {
-            margin-top: 60px;
-        }
-
-        .project {
-            padding: 25px 0;
-            border-top: 1px solid #333;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        * { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
     </style>
 </head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
 
-<body>
+    <header class="w-full border-b border-zinc-800 px-6 py-4 relative z-50 bg-zinc-950">
+        <nav class="max-w-5xl mx-auto flex items-center justify-between">
+            <a href="/" class="font-bold text-sm tracking-wider uppercase text-zinc-100 hover:text-zinc-400 transition-colors">
+                HB Works
+            </a>
+            
+            <button id="menu-btn" onclick="toggleMenu()" class="p-2 border border-zinc-800 hover:border-zinc-600 transition-colors flex items-center gap-2 text-xs font-mono text-zinc-300 uppercase tracking-widest" aria-label="Toggle navigation menu">
+                <span>Menu</span>
+                <svg id="burger-icon" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+                <svg id="close-icon" class="w-4 h-4 fill-current hidden" viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
 
-    <main>
-        <h1>HB Works</h1>
+    <div id="nav-overlay" class="hidden fixed inset-0 top-[57px] bg-zinc-950/95 border-b border-zinc-800 z-40 flex flex-col justify-start px-6 py-12 max-w-5xl mx-auto">
+        <div class="flex flex-col gap-6 text-xl font-mono uppercase tracking-widest">
+            <a href="/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+                01. Main
+            </a>
+            <a href="/photography/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+                02. Photography
+            </a>
+            <a href="/contact/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+                03. Contact
+            </a>
+        </div>
+    </div>
 
-        <p>
-            Hi, I'm Harry. This is my portfolio.
-        </p>
+    <main class="flex-grow flex flex-col justify-center py-24 px-6 max-w-5xl mx-auto w-full">
+        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-4">
+            Domain: hbworks.uk
+        </div>
+        
+        <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-zinc-100 mb-8 leading-tight">
+            HB Works
+        </h1>
 
-        <section class="projects">
-            <h2>Projects</h2>
-
-            <div class="project">
-                <h3>Project One</h3>
-                <p>Something I've built.</p>
-            </div>
-
-            <div class="project">
-                <h3>Project Two</h3>
-                <p>Another project I'm working on.</p>
-            </div>
-        </section>
+        <div>
+            <button onclick="copyDomain()" class="border border-zinc-800 text-zinc-300 hover:border-zinc-600 px-5 py-2.5 text-xs font-mono transition-colors">
+                <span id="copy-text">www.hbworks.uk</span>
+            </button>
+        </div>
     </main>
 
+    <footer class="py-6 px-6 border-t border-zinc-800 text-xs font-mono text-zinc-500 text-center">
+        <p>&copy; HB Works (hbworks.uk)</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const overlay = document.getElementById('nav-overlay');
+            const burger = document.getElementById('burger-icon');
+            const close = document.getElementById('close-icon');
+            
+            overlay.classList.toggle('hidden');
+            burger.classList.toggle('hidden');
+            close.classList.toggle('hidden');
+        }
+
+        function copyDomain() {
+            const domain = "www.hbworks.uk";
+            const textarea = document.createElement("textarea");
+            textarea.value = domain;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const label = document.getElementById("copy-text");
+            label.innerText = "COPIED TO CLIPBOARD";
+            setTimeout(() => { label.innerText = "www.hbworks.uk"; }, 2000);
+        }
+    </script>
 </body>
 </html>
