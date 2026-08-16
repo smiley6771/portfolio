@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photography | HB Works</title>
+    <meta name="description" content="Explore the full photographic archive by HB Works, featuring coastal scenes, reflections, architecture, and wildlife.">
+    
+    <!-- Inline SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2309090b'/><text x='50%' y='62%' font-family='monospace' font-weight='bold' font-size='42' fill='%23f4f4f5' text-anchor='middle'>HB</text></svg>">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -242,6 +248,11 @@
         </div>
     </div>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()" class="hidden fixed bottom-6 right-6 z-40 bg-zinc-950 text-zinc-200 border border-zinc-700 px-3 py-2 text-xs font-mono uppercase tracking-widest hover:border-zinc-400 active:bg-zinc-900 transition-all">
+        &uarr; TOP
+    </button>
+
     <footer class="py-6 px-6 border-t border-zinc-800 text-xs font-mono text-zinc-500 text-center">
         <p>&copy; HB Works (hbworks.uk)</p>
     </footer>
@@ -282,6 +293,21 @@
             document.body.classList.remove('overflow-hidden');
         }
 
+        /* Smooth Back-to-Top */
+        window.addEventListener('scroll', () => {
+            const btt = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                btt.classList.remove('hidden');
+            } else {
+                btt.classList.add('hidden');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* Keyboard & Context Guardrails */
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 forceCloseLightbox();
