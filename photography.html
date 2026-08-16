@@ -41,6 +41,7 @@
         body { font-family: 'Inter', sans-serif; }
         * { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
 
+        /* Disable text selection and touch-callouts */
         body, img {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -49,6 +50,7 @@
             -webkit-touch-callout: none;
         }
 
+        /* Hide content during print or print-to-PDF attempts */
         @media print {
             body { display: none !important; }
         }
@@ -97,6 +99,7 @@
             Photography
         </h1>
 
+        <!-- Masonry Column Layout -->
         <div class="columns-1 md:columns-2 gap-6 sm:gap-8">
             <!-- Photo 1 -->
             <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
@@ -212,7 +215,9 @@
         </div>
     </main>
 
+    <!-- Fullscreen Lightbox Modal -->
     <div id="lightbox" class="hidden fixed inset-0 z-50 bg-zinc-950/95 flex flex-col items-center justify-between p-3 sm:p-8 select-none border-t-2 border-zinc-100 overflow-y-auto" onclick="closeLightbox(event)">
+        <!-- Top bar with title and close button -->
         <div class="w-full max-w-5xl flex justify-between items-center border-b border-zinc-800 pb-3 gap-2">
             <div class="flex items-center gap-2 truncate">
                 <span id="lightbox-title" class="text-[11px] sm:text-xs font-mono text-zinc-300 uppercase tracking-widest truncate">
@@ -227,8 +232,9 @@
             </button>
         </div>
 
-        <div class="relative my-auto max-w-5xl max-h-[75vh] w-full flex items-center justify-center border border-zinc-800 bg-zinc-900 p-1.5 sm:p-2 overflow-hidden" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" alt="Expanded View" class="max-w-full max-h-[65vh] sm:max-h-[70vh] object-contain pointer-events-none select-none">
+        <!-- Lightbox Image Wrapper -->
+        <div class="relative my-auto max-w-5xl max-h-[70vh] w-full flex items-center justify-center border border-zinc-800 bg-zinc-900 p-1.5 sm:p-2 overflow-hidden" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Expanded View" class="max-w-full max-h-[60vh] sm:max-h-[65vh] object-contain pointer-events-none select-none">
             
             <div class="absolute inset-0 z-10 bg-transparent"></div>
 
@@ -243,8 +249,15 @@
             </div>
         </div>
 
-        <div class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest text-center py-2">
-            HB WORKS ARCHIVE • PROTECTED CONTENT
+        <!-- Lightbox Footer Bar with Inquiry Action -->
+        <div class="w-full max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-zinc-800 pt-3" onclick="event.stopPropagation()">
+            <div class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center sm:text-left">
+                HB WORKS ARCHIVE • PROTECTED CONTENT
+            </div>
+            <button id="inquire-btn" onclick="inquireImage()" class="w-full sm:w-auto px-4 py-2.5 border border-zinc-100 bg-zinc-100 text-zinc-950 hover:bg-zinc-300 transition-colors text-xs font-mono font-semibold uppercase tracking-wider flex items-center justify-center gap-2">
+                <span id="inquire-text">Inquire About Print / Usage</span>
+                <span>&rarr;</span>
+            </button>
         </div>
     </div>
 
@@ -258,6 +271,8 @@
     </footer>
 
     <script>
+        let currentLightboxTitle = '';
+
         function toggleMenu() {
             const overlay = document.getElementById('nav-overlay');
             const burger = document.getElementById('burger-icon');
@@ -268,15 +283,21 @@
             close.classList.toggle('hidden');
         }
 
+        /* Lightbox Functions */
         function openLightbox(src, title, tag) {
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
             const titleEl = document.getElementById('lightbox-title');
             const tagEl = document.getElementById('lightbox-tag');
 
+            currentLightboxTitle = title;
             img.src = src;
             titleEl.innerText = title;
             tagEl.innerText = tag || '';
+
+            const inquireText = document.getElementById('inquire-text');
+            if (inquireText) inquireText.innerText = "Inquire About Print / Usage";
+
             lightbox.classList.remove('hidden');
             document.body.classList.add('overflow-hidden');
         }
@@ -293,6 +314,32 @@
             document.body.classList.remove('overflow-hidden');
         }
 
+        /* Inquire About Image Function */
+        function inquireImage() {
+            const email = "hbworksuk@proton.me";
+            const subject = encodeURIComponent(`Inquiry: ${currentLightboxTitle}`);
+            const body = encodeURIComponent(`Hello HB Works,\n\nI am inquiring about print or licensing/usage options for the photograph: ${currentLightboxTitle}.\n\nPlease let me know availability and details.\n\nThank you!`);
+            
+            // Copy reference to clipboard as fallback
+            const textarea = document.createElement("textarea");
+            textarea.value = `HB Works Image Inquiry: ${currentLightboxTitle} (Contact: ${email})`;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const inquireText = document.getElementById("inquire-text");
+            if (inquireText) {
+                inquireText.innerText = "OPENING EMAIL (REF COPIED)";
+                setTimeout(() => {
+                    inquireText.innerText = "Inquire About Print / Usage";
+                }, 3000);
+            }
+
+            // Launch mail client
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+
         /* Smooth Back-to-Top */
         window.addEventListener('scroll', () => {
             const btt = document.getElementById('backToTop');
@@ -307,7 +354,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* Keyboard & Context Guardrails */
+        /* Keyboard & Security Events */
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
                 forceCloseLightbox();
