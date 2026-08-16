@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | HB Works</title>
+    <meta name="description" content="Learn about HB Works — practice philosophy, photographic focus on UK coastal scenes and reflections, and archival print standards.">
+    
+    <!-- Inline SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2309090b'/><text x='50%' y='62%' font-family='monospace' font-weight='bold' font-size='42' fill='%23f4f4f5' text-anchor='middle'>HB</text></svg>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            950: '#09090b',
+                            900: '#18181b',
+                            800: '#27272a',
+                            700: '#3f3f46',
+                            400: '#a1a1aa',
+                            300: '#d4d4d8',
+                            100: '#f4f4f5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        * { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
+
+    <header class="w-full border-b border-zinc-800 px-6 py-4 relative z-50 bg-zinc-950">
+        <nav class="max-w-5xl mx-auto flex items-center justify-between">
+            <a href="/" class="font-bold text-sm tracking-wider uppercase text-zinc-100 hover:text-zinc-400 transition-colors">
+                HB Works
+            </a>
+            
+            <a href="/pages" class="p-2 border border-zinc-800 hover:border-zinc-600 transition-colors flex items-center gap-2 text-xs font-mono text-zinc-300 uppercase tracking-widest" aria-label="Open navigation index">
+                <span>Menu</span>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex flex-col py-10 sm:py-20 px-4 sm:px-6 max-w-5xl mx-auto w-full gap-12 sm:gap-16">
+        
+        <div>
+            <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-zinc-100 leading-tight font-mono mb-6">
+                About HB Works
+            </h1>
+        </div>
+
+        <section class="border-t border-zinc-800 pt-8 sm:pt-12 flex flex-col sm:flex-row justify-start gap-3 font-mono">
+            <a href="/photography" class="px-5 py-3 border border-zinc-800 text-zinc-300 hover:border-zinc-600 transition-colors text-xs uppercase tracking-wider text-center">
+                Explore Archive
+            </a>
+            <a href="/contact" class="px-5 py-3 border border-zinc-100 bg-zinc-100 text-zinc-950 font-semibold hover:bg-zinc-300 transition-colors text-xs uppercase tracking-wider text-center">
+                Contact
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="py-6 px-6 border-t border-zinc-800 text-xs font-mono text-zinc-500 text-center">
+        <p>&copy; HB Works (hbworks.uk)</p>
+    </footer>
+</body>
+</html>
