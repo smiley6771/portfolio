@@ -52,9 +52,10 @@
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
 
+    <!-- Header Navigation -->
     <header class="w-full border-b border-zinc-800 px-6 py-4 relative z-50 bg-zinc-950">
         <nav class="max-w-5xl mx-auto flex items-center justify-between">
-            <a href="/" class="font-bold text-sm tracking-wider uppercase text-zinc-100 hover:text-zinc-400 transition-colors">
+            <a href="index.html" class="font-bold text-sm tracking-wider uppercase text-zinc-100 hover:text-zinc-400 transition-colors">
                 HB Works
             </a>
             
@@ -70,20 +71,22 @@
         </nav>
     </header>
 
+    <!-- Overlay Navigation Menu -->
     <div id="nav-overlay" class="hidden fixed inset-0 top-[57px] bg-zinc-950/95 border-b border-zinc-800 z-40 flex flex-col justify-start px-6 py-12 max-w-5xl mx-auto">
         <div class="flex flex-col gap-6 text-xl font-mono uppercase tracking-widest">
-            <a href="/" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+            <a href="index.html" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 01. Main
             </a>
-            <a href="/photography" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+            <a href="photography.html" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 02. Photography
             </a>
-            <a href="/contact" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
+            <a href="contact.html" class="py-3 border-b border-zinc-800 hover:text-zinc-400 text-zinc-100 transition-colors">
                 03. Contact
             </a>
         </div>
     </div>
 
+    <!-- Main Content -->
     <main class="flex-grow flex flex-col py-24 px-6 max-w-5xl mx-auto w-full">
         <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-4">
             Archive
@@ -96,13 +99,17 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Photo 1 -->
             <div class="border border-zinc-800 p-2 bg-zinc-900/50">
-                <div class="relative overflow-hidden select-none">
+                <div class="relative overflow-hidden select-none group cursor-pointer" onclick="openLightbox('images/beach_sunset_1.jpg', '01. BEACH_SUNSET_1.JPG')">
                     <img src="images/beach_sunset_1.jpg" alt="Beach Sunset" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/beach_sunset_1.jpg'">
-                    <!-- Transparent protective overlay -->
-                    <div class="absolute inset-0 z-10 bg-transparent"></div>
-                    <!-- Watermark -->
-                    <div class="absolute bottom-2 right-2 z-20 text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 pointer-events-none select-none tracking-widest uppercase border border-zinc-800">
-                        © HB WORKS
+                    <!-- Transparent protective & click overlay -->
+                    <div class="absolute inset-0 z-10 bg-transparent flex items-end justify-between p-2">
+                        <span class="text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
+                            CLICK TO EXPAND
+                        </span>
+                        <!-- Corner Watermark -->
+                        <span class="text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
+                            © HB WORKS
+                        </span>
                     </div>
                 </div>
                 <div class="mt-3 flex justify-between text-xs font-mono text-zinc-500">
@@ -113,13 +120,17 @@
 
             <!-- Photo 2 -->
             <div class="border border-zinc-800 p-2 bg-zinc-900/50">
-                <div class="relative overflow-hidden select-none">
+                <div class="relative overflow-hidden select-none group cursor-pointer" onclick="openLightbox('images/photo2.jpg', '02. PHOTO2.JPG')">
                     <img src="images/photo2.jpg" alt="Photo Title 2" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/photo2.jpg'">
-                    <!-- Transparent protective overlay -->
-                    <div class="absolute inset-0 z-10 bg-transparent"></div>
-                    <!-- Watermark -->
-                    <div class="absolute bottom-2 right-2 z-20 text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 pointer-events-none select-none tracking-widest uppercase border border-zinc-800">
-                        © HB WORKS
+                    <!-- Transparent protective & click overlay -->
+                    <div class="absolute inset-0 z-10 bg-transparent flex items-end justify-between p-2">
+                        <span class="text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
+                            CLICK TO EXPAND
+                        </span>
+                        <!-- Corner Watermark -->
+                        <span class="text-[10px] font-mono text-zinc-300/80 bg-zinc-950/80 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">
+                            © HB WORKS
+                        </span>
                     </div>
                 </div>
                 <div class="mt-3 flex justify-between text-xs font-mono text-zinc-500">
@@ -130,10 +141,48 @@
         </div>
     </main>
 
+    <!-- Fullscreen Lightbox Modal -->
+    <div id="lightbox" class="hidden fixed inset-0 z-50 bg-zinc-950/95 flex flex-col items-center justify-between p-4 sm:p-8 select-none border-t-2 border-zinc-100" onclick="closeLightbox(event)">
+        <!-- Top bar with title and close button -->
+        <div class="w-full max-w-5xl flex justify-between items-center border-b border-zinc-800 pb-4">
+            <span id="lightbox-title" class="text-xs font-mono text-zinc-400 uppercase tracking-widest">
+                00. IMAGE.JPG
+            </span>
+            <button onclick="forceCloseLightbox()" class="px-3 py-1 border border-zinc-800 text-xs font-mono text-zinc-300 hover:border-zinc-500 uppercase tracking-widest">
+                [ CLOSE ESC ]
+            </button>
+        </div>
+
+        <!-- Lightbox Image Wrapper -->
+        <div class="relative my-auto max-w-5xl max-h-[75vh] flex items-center justify-center border border-zinc-800 bg-zinc-900 p-2 overflow-hidden" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Expanded View" class="max-w-full max-h-[70vh] object-contain pointer-events-none select-none">
+            
+            <!-- Transparent shield over expanded image -->
+            <div class="absolute inset-0 z-10 bg-transparent"></div>
+
+            <!-- Large Center Overlay Watermark -->
+            <div class="absolute inset-0 z-20 pointer-events-none flex items-center justify-center">
+                <div class="text-2xl sm:text-5xl font-mono font-bold text-zinc-100/30 uppercase tracking-[0.25em] border-2 border-zinc-100/20 px-6 py-4 rotate-[-12deg] select-none text-center">
+                    © HB WORKS
+                </div>
+            </div>
+
+            <!-- Bottom watermark strip inside modal -->
+            <div class="absolute bottom-4 right-4 z-20 text-xs font-mono text-zinc-200 bg-zinc-950/90 px-3 py-1 border border-zinc-800 tracking-widest uppercase pointer-events-none">
+                © HB WORKS • HBWORKS.UK
+            </div>
+        </div>
+
+        <div class="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+            HB WORKS ARCHIVE • PROTECTED CONTENT
+        </div>
+    </div>
+
     <footer class="py-6 px-6 border-t border-zinc-800 text-xs font-mono text-zinc-500 text-center">
         <p>&copy; HB Works (hbworks.uk)</p>
     </footer>
 
+    <!-- Scripts -->
     <script>
         function toggleMenu() {
             const overlay = document.getElementById('nav-overlay');
@@ -145,13 +194,38 @@
             close.classList.toggle('hidden');
         }
 
-        // Prevent right click menu, image dragging, and text highlighting
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('dragstart', e => e.preventDefault());
-        document.addEventListener('selectstart', e => e.preventDefault());
+        /* Lightbox Functions */
+        function openLightbox(src, title) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const titleEl = document.getElementById('lightbox-title');
 
-        // Block common inspection & saving shortcuts (F12, Ctrl+S, Ctrl+U, Ctrl+P)
+            img.src = src;
+            titleEl.innerText = title;
+            lightbox.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeLightbox(event) {
+            // Close if clicking outside the image container
+            if (event.target.id === 'lightbox') {
+                forceCloseLightbox();
+            }
+        }
+
+        function forceCloseLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        /* Keyboard events (Esc to close, prevent dev shortcuts) */
         document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                forceCloseLightbox();
+            }
+
+            // Block common inspection & saving shortcuts (F12, Ctrl+S, Ctrl+U, Ctrl+P)
             if (
                 e.key === 'F12' ||
                 (e.ctrlKey && ['s', 'u', 'p', 'c'].includes(e.key.toLowerCase())) ||
@@ -160,6 +234,11 @@
                 e.preventDefault();
             }
         });
+
+        /* Prevent right click menu, image dragging, and text highlighting */
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
+        document.addEventListener('selectstart', e => e.preventDefault());
     </script>
 </body>
 </html>
