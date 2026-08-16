@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | HB Works</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        zinc: {
+                            950: '#09090b',
+                            900: '#18181b',
+                            800: '#27272a',
+                            700: '#3f3f46',
+                            400: '#a1a1aa',
+                            300: '#d4d4d8',
+                            100: '#f4f4f5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        * { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
+
+    <header class="w-full border-b border-zinc-800 px-6 py-4">
+        <nav class="max-w-5xl mx-auto flex items-center justify-between">
+            <a href="../" class="font-bold text-sm tracking-wider uppercase text-zinc-100 hover:text-zinc-400 transition-colors">
+                HB Works
+            </a>
+            
+            <a href="mailto:hbworksuk@proton.me" class="text-xs font-mono text-zinc-400 hover:text-zinc-100 transition-colors">
+                hbworksuk@proton.me
+            </a>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex flex-col justify-center py-24 px-6 max-w-5xl mx-auto w-full">
+        <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-4">
+            Contact
+        </div>
+        
+        <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-zinc-100 mb-8 leading-tight font-mono">
+            hbworksuk@proton.me
+        </h1>
+
+        <div class="flex flex-wrap gap-4 items-center">
+            <a href="mailto:hbworksuk@proton.me" class="border border-zinc-100 bg-zinc-100 text-zinc-950 px-5 py-2.5 text-xs font-mono font-semibold uppercase tracking-wider hover:bg-zinc-300 hover:border-zinc-300 transition-colors">
+                Send Email
+            </a>
+            <button onclick="copyEmail()" class="border border-zinc-800 text-zinc-300 hover:border-zinc-600 px-5 py-2.5 text-xs font-mono transition-colors">
+                <span id="copy-email-text">Copy Address</span>
+            </button>
+        </div>
+    </main>
+
+    <footer class="py-6 px-6 border-t border-zinc-800 text-xs font-mono text-zinc-500 text-center">
+        <p>&copy; HB Works (hbworks.uk)</p>
+    </footer>
+
+    <script>
+        function copyEmail() {
+            const email = "hbworksuk@proton.me";
+            const textarea = document.createElement("textarea");
+            textarea.value = email;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const label = document.getElementById("copy-email-text");
+            label.innerText = "COPIED TO CLIPBOARD";
+            setTimeout(() => { label.innerText = "Copy Address"; }, 2000);
+        }
+    </script>
+</body>
+</html>
