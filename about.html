@@ -39,10 +39,19 @@
     </script>
     <style>
         body { font-family: 'Inter', sans-serif; }
+        #page-loader { position: fixed; inset: 0; z-index: 100; background: #09090b; padding: 1rem; animation: loader-hide .4s 1.2s forwards; }
+        .loader-inner { max-width: 64rem; margin: 0 auto; }
+        .loader-bar, .loader-block { background: linear-gradient(90deg,#18181b 25%,#27272a 50%,#18181b 75%); background-size: 200% 100%; animation: skeleton-shimmer 1.3s infinite; }
+        .loader-bar { height: 1rem; width: 8rem; margin: 1rem 0 4rem; }
+        .loader-title { height: 3rem; width: 15rem; margin-bottom: 2rem; }
+        .loader-block { height: 10rem; width: 100%; }
+        @keyframes skeleton-shimmer { to { background-position: -200% 0; } }
+        @keyframes loader-hide { to { opacity: 0; visibility: hidden; pointer-events: none; } }
         * { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
+    <div id="page-loader" aria-label="Loading page"><div class="loader-inner"><div class="loader-bar"></div><div class="loader-title loader-block"></div><div class="loader-block"></div></div></div>
 
     <header class="w-full border-b border-zinc-800 px-6 py-4 relative z-50 bg-zinc-950">
         <nav class="max-w-5xl mx-auto flex items-center justify-between">
