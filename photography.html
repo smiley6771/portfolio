@@ -40,6 +40,9 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         main img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #18181b; }
+        #page-loader .loader-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; }
+        #page-loader .loader-block { height: 18rem; }
+        @media (max-width: 640px) { #page-loader .loader-grid { grid-template-columns: 1fr; gap: 1rem; } }
         #page-loader { position: fixed; inset: 0; z-index: 100; background: #09090b; padding: 1rem; transition: opacity .35s ease, visibility .35s ease; }
         #page-loader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
         .loader-inner { max-width: 64rem; margin: 0 auto; }
@@ -66,7 +69,7 @@
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
-    <div id="page-loader" aria-label="Loading page"><div class="loader-inner"><div class="loader-bar"></div><div class="loader-title loader-block"></div><div class="loader-block"></div></div></div>
+    <div id="page-loader" aria-label="Loading page"><div class="loader-inner"><div class="loader-bar"></div><div class="loader-title loader-block"></div><div class="loader-grid"><div class="loader-block"></div><div class="loader-block"></div><div class="loader-block"></div><div class="loader-block"></div></div></div></div>
 
     <header class="w-full border-b border-zinc-800 px-6 py-4 relative z-50 bg-zinc-950">
         <nav class="max-w-5xl mx-auto flex items-center justify-between">
@@ -97,7 +100,7 @@
             <!-- Photo 1 -->
             <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" role="button" tabindex="0" aria-label="Expand Beach Sunset 1" onclick="openLightbox('images/beach_sunset_1.jpg', '01. BEACH_SUNSET_1.JPG', '[COASTAL]')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('images/beach_sunset_1.jpg', '01. BEACH_SUNSET_1.JPG', '[COASTAL]')}"">
-                    <img src="images/beach_sunset_1.jpg" alt="Beach Sunset" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/beach_sunset_1.jpg'">
+                    <img src="images/beach_sunset_1.jpg" alt="Beach Sunset" class="w-full h-auto object-cover pointer-events-none select-none" loading="eager" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/beach_sunset_1.jpg'">
                     
                     <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                         <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
@@ -125,7 +128,7 @@
             <!-- Photo 2 -->
             <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" role="button" tabindex="0" aria-label="Expand Orange Sunset Reflection Puddle" onclick="openLightbox('images/orange_sunset_reflection_puddle.jpg', '02. ORANGE_SUNSET_REFLECTION_PUDDLE.JPG', '[REFLECTION]')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('images/orange_sunset_reflection_puddle.jpg', '02. ORANGE_SUNSET_REFLECTION_PUDDLE.JPG', '[REFLECTION]')}"">
-                    <img src="images/orange_sunset_reflection_puddle.jpg" alt="Orange Sunset Reflection Puddle" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/orange_sunset_reflection_puddle.jpg'">
+                    <img src="images/orange_sunset_reflection_puddle.jpg" alt="Orange Sunset Reflection Puddle" class="w-full h-auto object-cover pointer-events-none select-none" loading="eager" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/orange_sunset_reflection_puddle.jpg'">
                     
                     <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                         <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
@@ -153,7 +156,7 @@
             <!-- Photo 3 -->
             <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" role="button" tabindex="0" aria-label="Expand Multiple Coloured Buildings Beach" onclick="openLightbox('images/multiple_coloured_buildings_beach.jpg', '03. MULTIPLE_COLOURED_BUILDINGS_BEACH.JPG', '[ARCHITECTURE]')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('images/multiple_coloured_buildings_beach.jpg', '03. MULTIPLE_COLOURED_BUILDINGS_BEACH.JPG', '[ARCHITECTURE]')}"">
-                    <img src="images/multiple_coloured_buildings_beach.jpg" alt="Multiple Coloured Buildings Beach" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/multiple_coloured_buildings_beach.jpg'">
+                    <img src="images/multiple_coloured_buildings_beach.jpg" alt="Multiple Coloured Buildings Beach" class="w-full h-auto object-cover pointer-events-none select-none" loading="eager" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/multiple_coloured_buildings_beach.jpg'">
                     
                     <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                         <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
@@ -181,7 +184,7 @@
             <!-- Photo 4 -->
             <div class="break-inside-avoid mb-6 sm:mb-8 border border-zinc-800 p-2 bg-zinc-900/50">
                 <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" role="button" tabindex="0" aria-label="Expand Bird in Foliage" onclick="openLightbox('images/bird_in_foliage.jpg', '04. BIRD_IN_FOLIAGE.JPG', '[WILDLIFE]')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('images/bird_in_foliage.jpg', '04. BIRD_IN_FOLIAGE.JPG', '[WILDLIFE]')}"">
-                    <img src="images/bird_in_foliage.jpg" alt="Bird in Foliage" class="w-full h-auto object-cover pointer-events-none select-none" loading="lazy" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/bird_in_foliage.jpg'">
+                    <img src="images/bird_in_foliage.jpg" alt="Bird in Foliage" class="w-full h-auto object-cover pointer-events-none select-none" loading="eager" onerror="this.src='https://placehold.co/800x600/18181b/a1a1aa?text=images/bird_in_foliage.jpg'">
                     
                     <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
                         <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">
