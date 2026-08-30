@@ -69,7 +69,7 @@
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen flex flex-col border-t-2 border-zinc-100 selection:bg-zinc-100 selection:text-zinc-950">
-    <div id="page-loader" aria-label="Loading page"><div class="loader-inner"><div class="loader-bar"></div><div class="loader-title loader-block"></div><div class="loader-grid"><div class="loader-block"></div><div class="loader-block"></div><div class="loader-block"></div><div class="loader-block"></div></div></div></div>
+    <div id="page-loader" aria-label="Loading page"><div class="loader-inner"><div class="loader-bar"></div><div class="loader-title loader-block"></div><div class="loader-grid"><div class="loader-block"></div><div class="loader-block"></div><div class="loader-block"></div><div class="loader-block"></div><div class="loader-block"></div></div></div></div>
 
     <header class="w-full border-b border-zinc-800 px-6 py-4 relative z-50 bg-zinc-950">
         <nav class="max-w-5xl mx-auto flex items-center justify-between">
@@ -209,6 +209,33 @@
                 </div>
             </div>
         </div>
+
+        <details class="mt-8 sm:mt-12 border-t border-zinc-800 pt-8 sm:pt-12 group">
+            <summary class="cursor-pointer list-none flex items-center justify-between mb-6">
+                <div>
+                    <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-2">In progress</div>
+                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-100 font-mono">Unfinished Work <span class="text-zinc-500 text-sm align-middle">[+]</span></h2>
+                </div>
+                <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Not yet final</span>
+            </summary>
+            <div class="max-w-xl break-inside-avoid border border-zinc-800 p-2 bg-zinc-900/50">
+                <div class="relative overflow-hidden select-none group cursor-pointer active:opacity-90" role="button" tabindex="0" aria-label="Expand Triple Traffic Light" onclick="openLightbox('images/Triple-Traffic-Light.jpg', '05. TRIPLE_TRAFFIC_LIGHT.JPG', '[UNFINISHED]')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('images/Triple-Traffic-Light.jpg', '05. TRIPLE_TRAFFIC_LIGHT.JPG', '[UNFINISHED]')}"">
+                    <img src="images/Triple-Traffic-Light.jpg" alt="Triple Traffic Light" class="w-full h-auto object-cover pointer-events-none select-none" loading="eager" onerror="this.src='https://placehold.co/800x1200/18181b/a1a1aa?text=images/Triple-Traffic-Light.jpg'">
+                    <div class="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+                        <span class="text-xs sm:text-base font-mono font-bold text-zinc-100/30 uppercase tracking-[0.2em] border border-zinc-100/20 px-3 py-1.5 rotate-[-12deg] select-none text-center">&copy; HB WORKS</span>
+                    </div>
+                    <div class="absolute inset-0 z-20 bg-transparent flex items-end justify-between p-2">
+                        <span class="text-[10px] font-mono text-zinc-300/90 bg-zinc-950/90 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">TAP TO EXPAND</span>
+                        <span class="text-[10px] font-mono text-zinc-300/90 bg-zinc-950/90 px-2 py-0.5 tracking-widest uppercase border border-zinc-800">&copy; HB WORKS</span>
+                    </div>
+                </div>
+                <div class="mt-3 flex items-center justify-between text-xs font-mono">
+                    <span class="text-zinc-400">05. TRIPLE_TRAFFIC_LIGHT.JPG</span>
+                    <span class="text-[10px] border border-zinc-800 bg-zinc-950 text-zinc-300 px-2 py-0.5 uppercase tracking-widest">[UNFINISHED]</span>
+                </div>
+                <button type="button" onclick="openIdeaPrompt(event)" class="mt-4 w-full border border-zinc-100 bg-zinc-100 text-zinc-950 px-4 py-2.5 text-xs font-mono font-semibold uppercase tracking-wider hover:bg-zinc-300 transition-colors">Suggest an idea &rarr;</button>
+            </div>
+        </details>
     </main>
 
     <!-- Fullscreen Lightbox Modal -->
@@ -254,6 +281,18 @@
                 <span id="inquire-text">Inquire About Print / Usage</span>
                 <span>&rarr;</span>
             </button>
+        </div>
+    </div>
+
+    <div id="idea-modal" class="hidden fixed inset-0 z-[60] bg-zinc-950/95 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="idea-modal-title">
+        <div class="w-full max-w-md border border-zinc-700 bg-zinc-950 p-5 sm:p-7">
+            <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">Unfinished Work</div>
+            <h2 id="idea-modal-title" class="text-xl font-mono font-bold text-zinc-100 mb-4">Have a way to improve this?</h2>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-6">Email your idea and let HB Works know what you think this piece could become.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button type="button" onclick="sendIdeaEmail()" class="flex-1 border border-zinc-100 bg-zinc-100 text-zinc-950 px-4 py-2.5 text-xs font-mono font-semibold uppercase tracking-wider hover:bg-zinc-300 transition-colors">Email your idea &rarr;</button>
+                <button type="button" onclick="closeIdeaPrompt()" class="flex-1 border border-zinc-700 text-zinc-300 px-4 py-2.5 text-xs font-mono uppercase tracking-wider hover:border-zinc-400 transition-colors">Not now</button>
+            </div>
         </div>
     </div>
 
@@ -325,6 +364,23 @@
 
             // Launch mail client
             window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+
+        function openIdeaPrompt(event) {
+            if (event) event.stopPropagation();
+            document.getElementById('idea-modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeIdeaPrompt() {
+            document.getElementById('idea-modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function sendIdeaEmail() {
+            const subject = encodeURIComponent('Idea for Triple Traffic Light');
+            const body = encodeURIComponent('Hello HB Works,\n\nI have an idea for the unfinished Triple Traffic Light work:\n\n');
+            window.location.href = `mailto:hbworksuk@proton.me?subject=${subject}&body=${body}`;
         }
 
         /* Smooth Back-to-Top */
