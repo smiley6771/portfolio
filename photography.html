@@ -357,17 +357,9 @@
             const subject = encodeURIComponent(`Inquiry: ${currentLightboxTitle}`);
             const body = encodeURIComponent(`Hello HB Works,\n\nI am inquiring about print or licensing/usage options for the photograph: ${currentLightboxTitle}.\n\nPlease let me know availability and details.\n\nThank you!`);
             
-            // Copy reference to clipboard as fallback
-            const textarea = document.createElement("textarea");
-            textarea.value = `HB Works Image Inquiry: ${currentLightboxTitle} (Contact: ${email})`;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-
             const inquireText = document.getElementById("inquire-text");
             if (inquireText) {
-                inquireText.innerText = "OPENING EMAIL (REF COPIED)";
+                inquireText.innerText = "OPENING EMAIL";
                 setTimeout(() => {
                     inquireText.innerText = "Inquire About Print / Usage";
                 }, 3000);
