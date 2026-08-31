@@ -288,7 +288,7 @@
         <div class="w-full max-w-md border border-zinc-700 bg-zinc-950 p-5 sm:p-7">
             <div class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">Unfinished Work</div>
             <h2 id="idea-modal-title" class="text-xl font-mono font-bold text-zinc-100 mb-4">Have a way to improve this?</h2>
-            <p class="text-sm text-zinc-400 leading-relaxed mb-6">Email your idea and let HB Works know what you think this piece could become.</p>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-6">Email your idea and let me know what you think this piece could become.</p>
             <div class="flex flex-col sm:flex-row gap-3">
                 <button type="button" onclick="sendIdeaEmail()" class="flex-1 border border-zinc-100 bg-zinc-100 text-zinc-950 px-4 py-2.5 text-xs font-mono font-semibold uppercase tracking-wider hover:bg-zinc-300 transition-colors">Email your idea &rarr;</button>
                 <button type="button" onclick="closeIdeaPrompt()" class="flex-1 border border-zinc-700 text-zinc-300 px-4 py-2.5 text-xs font-mono uppercase tracking-wider hover:border-zinc-400 transition-colors">Not now</button>
@@ -379,7 +379,7 @@
 
         function sendIdeaEmail() {
             const subject = encodeURIComponent('Idea for Triple Traffic Light');
-            const body = encodeURIComponent('Hello HB Works,\n\nI have an idea for the unfinished Triple Traffic Light work:\n\n');
+            const body = encodeURIComponent('Hello,\n\nI have an idea for the unfinished Triple Traffic Light work:\n\n');
             window.location.href = `mailto:hbworksuk@proton.me?subject=${subject}&body=${body}`;
         }
 
